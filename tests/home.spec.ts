@@ -57,27 +57,29 @@ test("server content stays readable without JavaScript", async ({
   await context.close();
 });
 
-test("mobile layout remains readable when text grows to 200 percent", async ({
-  page,
-}) => {
-  await page.setViewportSize({ width: 375, height: 900 });
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
-  await page.evaluate(() => {
-    const elements = Array.from(
-      document.querySelectorAll<HTMLElement>("body *"),
-    ).filter((element) => element instanceof HTMLElement);
-    const sizes = elements.map((element) =>
-      parseFloat(getComputedStyle(element).fontSize),
-    );
-    elements.forEach((element, index) => {
-      element.style.fontSize = `${sizes[index] * 2}px`;
+for (const width of [320, 375]) {
+  test(`mobile layout remains readable at ${width}px when text grows to 200 percent`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/");
+    await page.evaluate(() => {
+      const elements = Array.from(
+        document.querySelectorAll<HTMLElement>("body *"),
+      ).filter((element) => element instanceof HTMLElement);
+      const sizes = elements.map((element) =>
+        parseFloat(getComputedStyle(element).fontSize),
+      );
+      elements.forEach((element, index) => {
+        element.style.fontSize = `${sizes[index] * 2}px`;
+      });
     });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   });
-  expect(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= innerWidth,
-    ),
-  ).toBe(true);
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-});
+}

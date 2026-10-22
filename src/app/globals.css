@@ -692,7 +692,8 @@ h2 em {
     scroll-margin-top: 84px;
   }
   .header-inner {
-    height: 78px;
+    min-height: 78px;
+    height: auto;
     gap: 16px;
   }
   .wordmark {
@@ -1151,5 +1152,20 @@ h2 em {
   [data-reveal]:focus-within {
     opacity: 1;
     transform: none;
+  }
+}
+/* Keep navigation usable with enlarged text on the smallest phones. */
+@media (max-width: 359px) {
+  .values-strip {
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+  .menu-toggle {
+    min-width: 44px;
+    padding-inline: 0;
+    justify-content: center;
+  }
+  .menu-toggle > span:first-child {
+    display: none;
   }
 }
