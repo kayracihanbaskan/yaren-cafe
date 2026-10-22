@@ -68,7 +68,7 @@ npm test
 npm run build
 ```
 
-Chromium tam akış, 320/375/768/1440 px, %200 metin büyütme, iki dil/tema ve axe kontrollerini çalıştırır. Firefox ve WebKit, dil değiştirme, tema ve hikâye penceresi için smoke testleri çalıştırır. Linux CI, tarayıcı bağımlılıklarını `npx playwright install --with-deps chromium firefox webkit` ile kurar ve testleri üretim derlemesine karşı çalıştırır.
+Test komutları yalnızca elle çalıştırılır; repoda GitHub Actions veya otomatik CI/CD akışı yoktur. Chromium tam akış, 320/375/768/1440 px, %200 metin büyütme, iki dil/tema ve axe kontrollerini çalıştırır. Firefox ve WebKit, dil değiştirme, tema ve hikâye penceresi için smoke testleri çalıştırır. Ubuntu'da eksik tarayıcı kütüphaneleri `npx playwright install --with-deps chromium firefox webkit` ile kurulabilir.
 
 Tarayıcı testleri geliştirme sunucusunu otomatik açar. Çalışan sunucuda `TEST_BASE_URL=http://localhost:3000 npm test` kullan. Yalnızca Chromium için `npm test -- --project=chromium` çalıştırılabilir. `CHROMIUM_PATH` özel Chromium yolu belirtir; Linux'ta `/usr/bin/chromium` varsa otomatik seçilir. Test komutu, Node 26'nın yerleşik TypeScript yükleyicisiyle çakışmayı önler.
 
