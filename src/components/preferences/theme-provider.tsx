@@ -37,7 +37,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       defaultTheme="light"
       enableSystem
       storageKey="yaren-theme"
-      disableTransitionOnChange
     >
       <BrowserThemeColor />
       {children}

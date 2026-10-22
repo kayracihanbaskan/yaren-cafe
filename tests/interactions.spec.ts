@@ -59,10 +59,16 @@ test("mobile disclosure supports Escape and moves focus to the chosen section", 
   page,
 }) => {
   await page.setViewportSize({ width: 375, height: 812 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   const toggle = page.getByRole("button", { name: /Menüyü (aç|kapat)/ });
+  const header = page.getByRole("banner");
+  const headerBefore = await header.boundingBox();
+  const contentBefore = await page.locator("main").boundingBox();
   await toggle.click();
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  expect((await header.boundingBox())!.height).toBe(headerBefore!.height);
+  expect((await page.locator("main").boundingBox())!.y).toBe(contentBefore!.y);
   await page
     .getByRole("navigation", { name: "Ana navigasyon" })
     .getByRole("link", { name: "Kahvelerimiz" })
@@ -81,7 +87,7 @@ test("mobile disclosure supports Escape and moves focus to the chosen section", 
     .poll(async () => (await page.locator("#coffee-title").boundingBox())!.y)
     .toBeGreaterThan(75);
   await toggle.click();
-  await page.setViewportSize({ width: 1100, height: 900 });
+  await page.setViewportSize({ width: 768, height: 900 });
   await page.setViewportSize({ width: 375, height: 812 });
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
 });

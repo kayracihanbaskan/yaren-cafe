@@ -1,13 +1,3 @@
-@keyframes courtyard-enter {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 @keyframes story-enter {
   from {
     opacity: 0;
@@ -50,18 +40,6 @@
   }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-enter {
-    animation: courtyard-enter 750ms var(--ease-courtyard) both;
-  }
-  .hero-stagger-1 {
-    animation-delay: 80ms;
-  }
-  .hero-stagger-2 {
-    animation-delay: 160ms;
-  }
-  .hero-stagger-3 {
-    animation-delay: 240ms;
-  }
   [data-reveal] {
     transition:
       opacity 600ms var(--ease-courtyard),
@@ -75,7 +53,7 @@
     opacity: 1;
     transform: none;
   }
-  .hero-enter .steam {
+  .hero-steam .steam {
     animation: steam-drift 2400ms ease-in-out 2 both;
   }
   .story-dialog[open] {

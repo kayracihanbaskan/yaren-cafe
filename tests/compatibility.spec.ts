@@ -8,7 +8,13 @@ for (const locale of ["tr", "en"]) {
     await page.goto(`/${locale}`);
     await expect(page.locator("html")).toHaveAttribute("lang", locale);
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await page.getByRole("banner").getByRole("combobox").selectOption("dark");
+    await page
+      .getByRole("banner")
+      .getByRole("button", {
+        name: locale === "tr" ? "Koyu" : "Dark",
+        exact: true,
+      })
+      .click();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     const trigger = page.getByRole("article").first().locator("summary");
     await trigger.click();

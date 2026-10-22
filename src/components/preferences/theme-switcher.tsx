@@ -1,7 +1,7 @@
 "use client";
-import { useId, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
-import { SunIcon } from "@/components/ui/icons";
+import { SunIcon, MoonIcon, MonitorIcon } from "@/components/ui/icons";
 import type { Messages } from "@/i18n/types";
 const subscribe = () => () => {};
 export function ThemeSwitcher({
@@ -11,7 +11,6 @@ export function ThemeSwitcher({
   label: string;
   messages: Messages["theme"];
 }) {
-  const id = useId();
   const mounted = useSyncExternalStore(
     subscribe,
     () => true,
@@ -19,28 +18,31 @@ export function ThemeSwitcher({
   );
   const { theme, setTheme } = useTheme();
   return (
-    <div className="flex min-w-0 items-center gap-2">
-      <SunIcon className="size-4" />
-      <label className="sr-only" htmlFor={id}>
-        {label}
-      </label>
-      <select
-        id={id}
-        value={mounted ? theme : "light"}
-        disabled={!mounted}
-        onChange={(event) => setTheme(event.target.value)}
-        className="min-h-11 min-w-24 rounded-full border border-current/40 bg-transparent px-3 py-2 font-sans text-sm"
-      >
-        <option className="bg-surface text-ink" value="light">
-          {messages.light}
-        </option>
-        <option className="bg-surface text-ink" value="dark">
-          {messages.dark}
-        </option>
-        <option className="bg-surface text-ink" value="system">
-          {messages.system}
-        </option>
-      </select>
+    <div
+      role="group"
+      aria-label={label}
+      className="inline-flex shrink-0 items-center rounded-full border border-current/40 px-1"
+    >
+      {(
+        [
+          ["light", SunIcon],
+          ["dark", MoonIcon],
+          ["system", MonitorIcon],
+        ] as const
+      ).map(([value, Icon]) => (
+        <button
+          key={value}
+          type="button"
+          aria-label={messages[value]}
+          title={messages[value]}
+          aria-pressed={(mounted ? theme : "light") === value}
+          disabled={!mounted}
+          onClick={() => setTheme(value)}
+          className="inline-flex size-11 items-center justify-center rounded-full transition-colors duration-300 ease-courtyard hover:bg-current/10 aria-pressed:bg-current/15 disabled:cursor-default"
+        >
+          <Icon className="size-[18px]" />
+        </button>
+      ))}
     </div>
   );
 }

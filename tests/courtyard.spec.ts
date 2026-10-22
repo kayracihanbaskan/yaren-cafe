@@ -21,8 +21,10 @@ test("theme persists and system mode follows the device", async ({
   await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/tr");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-  const theme = page.getByRole("banner").getByLabel("Görünüm");
-  await theme.selectOption("dark");
+  const theme = page
+    .getByRole("banner")
+    .getByRole("group", { name: "Görünüm", exact: true });
+  await theme.getByRole("button", { name: "Koyu", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
     "content",
@@ -33,9 +35,9 @@ test("theme persists and system mode follows the device", async ({
   const other = await context.newPage();
   await other.goto("/en");
   await expect(other.locator("html")).toHaveAttribute("data-theme", "dark");
-  await theme.selectOption("light");
+  await theme.getByRole("button", { name: "Açık", exact: true }).click();
   await expect(other.locator("html")).toHaveAttribute("data-theme", "light");
-  await theme.selectOption("system");
+  await theme.getByRole("button", { name: "Sistem", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await page.emulateMedia({ colorScheme: "light" });
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
@@ -120,7 +122,7 @@ for (const locale of ["tr", "en"]) {
         );
         await page.goto(`/${locale}`);
         await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
-        const toggle = page.getByRole("banner").getByRole("button");
+        const toggle = page.getByRole("banner").locator(".menu-toggle");
         if (width === 375) await toggle.click();
         async function checkAccessibility() {
           const result = await new AxeBuilder({ page })

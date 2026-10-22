@@ -1,5 +1,6 @@
 "use client";
-import type { MouseEvent } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { Locale } from "@/i18n/types";
 export function LanguageSwitcher({
   locale,
@@ -8,21 +9,7 @@ export function LanguageSwitcher({
   locale: Locale;
   label: string;
 }) {
-  function navigate(event: MouseEvent<HTMLAnchorElement>) {
-    if (
-      event.button !== 0 ||
-      event.metaKey ||
-      event.ctrlKey ||
-      event.shiftKey ||
-      event.altKey ||
-      !window.location.hash
-    )
-      return;
-    event.preventDefault();
-    const target = new URL(event.currentTarget.href);
-    target.hash = window.location.hash;
-    window.location.assign(target.href);
-  }
+  const router = useRouter();
   return (
     <div
       className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-current/40 px-1 font-sans text-sm"
@@ -39,17 +26,23 @@ export function LanguageSwitcher({
             {language.toUpperCase()}
           </span>
         ) : (
-          <a
+          <Link
             key={language}
             href={`/${language}`}
+            scroll={false}
             hrefLang={language}
             lang={language}
             aria-label={language === "en" ? "English" : "Türkçe"}
-            onClick={navigate}
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-2 transition-colors hover:bg-current/10"
+            onNavigate={(event) => {
+              const hash = window.location.hash;
+              if (!hash) return;
+              event.preventDefault();
+              router.push(`/${language}${hash}`, { scroll: false });
+            }}
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-2 transition-colors duration-300 ease-courtyard hover:bg-current/10"
           >
             {language.toUpperCase()}
-          </a>
+          </Link>
         ),
       )}
     </div>

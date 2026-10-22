@@ -75,6 +75,38 @@
   img {
     object-fit: cover;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    :where(
+      body,
+      header,
+      footer,
+      nav,
+      section,
+      article,
+      figure,
+      dialog,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      span,
+      label,
+      li,
+      a,
+      button,
+      summary,
+      input,
+      textarea,
+      select,
+      [class*="bg-"],
+      [class*="border-"]
+    ) {
+      transition-property: background-color, border-color, color, box-shadow;
+      transition-duration: 300ms;
+      transition-timing-function: var(--ease-courtyard);
+    }
+  }
 }
 .plaster {
   background-image: url("/brand/plaster.svg");

@@ -19,43 +19,43 @@ export function Hero({ copy, alt }: { copy: Messages["hero"]; alt: string }) {
         <div className="grid min-w-0 items-center gap-10 pb-10 lg:grid-cols-[1fr_1.05fr] lg:gap-12 lg:pb-14">
           <div className="min-w-0 py-2 lg:py-8">
             <p
-              className={`${eyebrow} hero-enter mb-7 flex items-center gap-3 text-copper`}
+              className={`${eyebrow} mb-7 flex items-center gap-3 text-copper`}
             >
               <SunIcon className="size-6" />
               <span>{copy.eyebrow}</span>
             </p>
             <h1
               id="hero-title"
-              className="hero-enter hero-stagger-1 max-w-xl text-[clamp(2.75rem,6vw,5.1rem)] leading-[1.12] tracking-[-.055em]"
+              className="max-w-xl text-[clamp(2.75rem,6vw,5.1rem)] leading-[1.12] tracking-[-.055em]"
             >
               {copy.lines[0]}{" "}
               <em className="block text-olive">{copy.lines[1]}</em>{" "}
               {copy.lines[2]}
             </h1>
-            <p className="hero-enter hero-stagger-2 mt-7 max-w-md text-base leading-[1.8] text-muted">
+            <p className="mt-7 max-w-md text-base leading-[1.8] text-muted">
               {copy.description}
             </p>
-            <div className="hero-enter hero-stagger-3 mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <a className={primaryButton} href="#kahveler">
                 {copy.discover}
                 <ArrowIcon />
               </a>
               <a
                 href="#kahveni-bul"
-                className="inline-flex min-h-12 items-center gap-2 text-sm font-medium text-olive underline-offset-8 hover:underline"
+                className="inline-flex min-h-12 items-center gap-2 text-sm font-medium text-olive underline decoration-transparent underline-offset-8 transition-[color,text-decoration-color] duration-300 ease-courtyard hover:decoration-current"
               >
                 {copy.find}
                 <ArrowIcon diagonal />
               </a>
             </div>
-            <div className="hero-enter hero-stagger-3 mt-8 hidden items-center gap-4 text-copper lg:flex">
+            <div className="hero-steam mt-8 hidden items-center gap-4 text-copper lg:flex">
               <CupIllustration className="h-20 w-24" />
               <p className="max-w-48 font-serif text-base italic leading-relaxed">
                 {copy.note}
               </p>
             </div>
           </div>
-          <div className="hero-enter hero-stagger-2 relative min-w-0 pb-8 pl-4 pr-4 lg:pl-6 lg:pr-1">
+          <div className="relative min-w-0 pb-8 pl-4 pr-4 lg:pl-6 lg:pr-1">
             <div
               className="absolute -right-8 top-2 h-[85%] w-[94%] rounded-arch border border-copper/35"
               aria-hidden="true"

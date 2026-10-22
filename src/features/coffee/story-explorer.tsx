@@ -86,7 +86,7 @@ export function StoryExplorer({
       <details className="min-w-0">
         <summary
           ref={trigger}
-          className="group inline-flex min-h-12 cursor-pointer items-center gap-3 font-sans text-sm font-semibold text-olive underline-offset-8 hover:underline"
+          className="group inline-flex min-h-12 cursor-pointer items-center gap-3 font-sans text-sm font-semibold text-olive underline decoration-transparent underline-offset-8 transition-[color,text-decoration-color] duration-300 ease-courtyard hover:decoration-current"
           onClick={(event) => {
             event.preventDefault();
             setOpen(true);
@@ -95,7 +95,7 @@ export function StoryExplorer({
           {labels.story}
           <ArrowIcon
             diagonal
-            className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="transition-transform duration-300 ease-courtyard group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           />
         </summary>
         <div className="story-fallback">
@@ -137,17 +137,23 @@ export function StoryExplorer({
               <CloseIcon />
             </button>
           </div>
-          <div className="grid min-w-0 md:grid-cols-[.8fr_1.2fr]">
-            <div className="relative aspect-[4/3] min-w-0 bg-surface-alt md:sticky md:top-[69px] md:aspect-[3/4]">
-              <Image
-                src={image}
-                alt={alt}
-                fill
-                sizes="(max-width:767px) 100vw, 400px"
-                quality={80}
-              />
-            </div>
-            <div className="min-w-0 px-5 py-7 sm:p-9">
+          <div className="grid min-w-0 items-start gap-7 bg-canvas p-4 sm:gap-8 sm:p-7 md:grid-cols-[minmax(0,.85fr)_minmax(0,1.15fr)] md:p-8">
+            <figure className="min-w-0 rounded-[28px] border border-line bg-surface p-3 shadow-warm md:sticky md:top-[88px]">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] border border-line bg-surface-alt md:aspect-[.9]">
+                <Image
+                  src={image}
+                  alt={alt}
+                  fill
+                  sizes="(max-width:767px) 90vw, 360px"
+                  quality={80}
+                />
+              </div>
+              <figcaption className="flex min-w-0 items-center justify-between gap-3 px-2 pb-2 pt-5 font-serif text-xl leading-snug text-ink">
+                <span>{name}</span>
+                <Rosette className="size-7 text-copper" />
+              </figcaption>
+            </figure>
+            <div className="min-w-0 px-1 pb-3 pt-1 sm:px-0">
               <p className="mb-3 font-sans text-xs font-semibold tracking-widest text-copper uppercase">
                 {name}
               </p>

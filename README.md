@@ -18,11 +18,11 @@ npm run dev
 ## Deneyim ve tasarım
 
 - Krem sıva, ceviz, zeytin ve bakır paleti; kemerli fotoğraflar, yumuşak köşeler, ince geometrik motifler ve çizim fincanlar.
-- Her kahve için hikâye, hazırlama adımları ve eşlikçi önerisi. Masaüstünde iki sütunlu dialog, mobilde alttan açılan okuma penceresi; klavye odağı, Escape ve tetikleyiciye geri dönüş desteklenir. JavaScript kapalıyken native `details` aynı içeriği açar.
+- Her kahve için hikâye, hazırlama adımları ve eşlikçi önerisi. Çerçeveli fotoğraf kartı, masaüstünde iki sütunlu dialog ve mobilde alttan açılan okuma penceresi; klavye odağı, Escape ve tetikleyiciye geri dönüş desteklenir. JavaScript kapalıyken native `details` aynı içeriği açar.
 - Üç soruluk kahve bulucu: sohbet/ruh hali 2, yoğunluk 3, mola süresi 2 puan taşır. 27 yanıt kombinasyonunun tamamı unit testlerle doğrulanır. Yanıtlar kaydedilmez.
 - Varsayılan açık tema; koyu ve sistem seçenekleri. Yalnızca tema tercihi `yaren-theme` anahtarıyla saklanır, sekmeler arasında eşitlenir. Koyu temada fotoğraflar doğal renklerini korur.
-- `/tr` ve `/en` statik sayfaları; içerik, form hataları, hikâyeler, ekran okuyucu etiketleri ve SEO metinleri çevrilidir. Dil değiştirme mevcut bölüm bağlantısını korur; tarayıcı diliyle otomatik yönlendirme yapılmaz.
-- Tailwind CSS 4, CSS değişkenleriyle semantik renkler ve yerel Lora/Manrope variable fontlar. Animasyonlar kısa ve sınırlıdır; `prefers-reduced-motion` desteklenir. Sürekli scroll listener veya animasyon kütüphanesi kullanılmaz.
+- `/tr` ve `/en` statik sayfaları; içerik, form hataları, hikâyeler, ekran okuyucu etiketleri ve SEO metinleri çevrilidir. Dil değiştirme Next.js istemci navigasyonunu kullanır; mevcut bölüm bağlantısını ve kaydırma konumunu korur. Eski bölüm bağlantısına otomatik kaydırma ve tarayıcı diliyle yönlendirme yapılmaz.
+- Tailwind CSS 4, CSS değişkenleriyle semantik renkler ve yerel Lora/Manrope variable fontlar. Tema, buton ve tercih kontrolleri 300 ms renk geçişleri kullanır; dil değişiminde hero giriş animasyonu tekrarlanmaz. Telefon menüsü içerikten bağımsız açılır, 768 px ve üzeri ekranlarda dört bağlantı görünür. Animasyonlar kısa ve sınırlıdır; `prefers-reduced-motion` desteklenir. Sürekli scroll listener veya animasyon kütüphanesi kullanılmaz.
 
 ## Yapı
 
