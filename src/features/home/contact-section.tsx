@@ -1,3 +1,4 @@
+import { ContactForm } from "@/features/contact/contact-form";
 import { BrandMark } from "@/components/brand/brand-mark";
 export function ContactSection() {
   return (
@@ -23,8 +24,7 @@ export function ContactSection() {
         <BrandMark className="contact-mark" />
       </div>
       <div className="contact-form-slot">
-        <p className="eyebrow">HİKÂYENE BİR YER AYIRDIK.</p>
-        <p>Güzel sohbetler bir merhaba ile başlar.</p>
+        <ContactForm />
       </div>
     </section>
   );

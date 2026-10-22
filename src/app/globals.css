@@ -915,3 +915,233 @@ h2 em {
     scroll-behavior: auto !important;
   }
 }
+/* Interactive islands */
+.menu-toggle {
+  display: none;
+}
+.header-inner nav .arrow-icon {
+  display: none;
+}
+.form-note {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  max-width: 430px;
+}
+.form-field {
+  margin-bottom: 25px;
+}
+.form-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 550;
+  margin-bottom: 7px;
+}
+.form-field label span {
+  color: var(--olive-light);
+  margin-left: 3px;
+}
+.form-field input,
+.form-field textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--muted);
+  border-radius: 0;
+  width: 100%;
+  padding: 10px 0 12px;
+  min-height: 48px;
+  color: var(--ink);
+  font-size: 14px;
+  resize: vertical;
+  transition: border-color 180ms;
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+  font-size: 12px;
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--olive);
+}
+.form-field [aria-invalid="true"] {
+  border-color: var(--error);
+}
+.field-error {
+  font-size: 11px;
+  color: var(--error);
+  margin-top: 8px;
+  line-height: 1.6;
+}
+.form-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+.form-bottom > span {
+  font-size: 9px;
+  color: var(--muted);
+}
+.form-success {
+  border-top: 1px solid var(--line);
+  padding: 35px 0;
+  outline: none;
+}
+.form-success > .motif {
+  color: var(--olive-light);
+  margin-bottom: 18px;
+}
+.form-success h3 {
+  font-size: 38px;
+  line-height: 1.1;
+}
+.form-success p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-top: 18px;
+}
+.form-success button {
+  margin-top: 24px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--olive);
+}
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 84px;
+    min-height: 44px;
+    background: transparent;
+    border: 0;
+    color: var(--ink);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    padding: 8px 0 8px 12px;
+  }
+  .menu-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 21px;
+  }
+  .menu-lines span {
+    width: 21px;
+    height: 1px;
+    background: currentColor;
+    transition: transform 200ms var(--ease);
+  }
+  .menu-lines.is-open span:first-child {
+    transform: translateY(3px) rotate(45deg);
+  }
+  .menu-lines.is-open span:last-child {
+    transform: translateY(-3px) rotate(-45deg);
+  }
+  .header-inner nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 20px var(--gutter) 24px;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+  }
+  .header-inner nav[data-open="true"] {
+    display: flex;
+  }
+  .header-inner nav a,
+  .header-inner nav a:last-child {
+    display: flex;
+    justify-content: space-between;
+    min-height: 52px;
+    font-size: 16px;
+    padding: 8px 0;
+  }
+  .header-inner nav a:after {
+    display: none;
+  }
+  .header-inner nav .arrow-icon {
+    display: block;
+  }
+  .contact-form-slot {
+    padding-top: 4px;
+  }
+  .form-note {
+    font-size: 11px;
+    margin-bottom: 26px;
+  }
+  .form-field input,
+  .form-field textarea {
+    font-size: 16px;
+  }
+  .form-field label {
+    font-size: 12px;
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    font-size: 13px;
+  }
+  .form-bottom {
+    margin-top: 26px;
+  }
+  .form-bottom > span {
+    font-size: 9px;
+  }
+  .form-bottom .button {
+    font-size: 11px;
+  }
+  .form-success h3 {
+    font-size: 35px;
+  }
+}
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-enter {
+    animation: enter 650ms var(--ease) both;
+  }
+  .hero-copy .hero-enter:nth-child(2) {
+    animation-delay: 80ms;
+  }
+  .hero-copy .hero-enter:nth-child(3) {
+    animation-delay: 160ms;
+  }
+  .hero-copy .hero-enter:nth-child(4) {
+    animation-delay: 240ms;
+  }
+  .hero-visual.hero-enter {
+    animation-delay: 120ms;
+  }
+  [data-reveal] {
+    transition:
+      opacity 550ms var(--ease),
+      transform 550ms var(--ease);
+  }
+  [data-reveal="pending"] {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  [data-reveal]:focus-within {
+    opacity: 1;
+    transform: none;
+  }
+}
