@@ -49,19 +49,20 @@ export function CoffeeCollection({
               aria-labelledby={`${coffee.id}-title`}
               className={`group min-w-0 rounded-card border border-line bg-surface p-3 shadow-warm transition-shadow duration-300 hover:shadow-lg ${index === 1 ? "md:mt-10" : ""}`}
             >
-              <div
-                data-reveal
-                className={`relative aspect-[1.05] overflow-hidden bg-surface-alt ${index === 0 ? "rounded-t-[44%] rounded-b-2xl" : "rounded-[20px]"}`}
-              >
-                <Image
-                  src={coffee.image}
-                  alt={coffee.alt}
-                  fill
-                  sizes="(max-width:767px) 100vw, 33vw"
-                  quality={80}
-                  style={{ objectPosition: coffee.position }}
-                  className="motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.025]"
-                />
+              <div data-reveal className="relative">
+                <div
+                  className={`relative aspect-[1.05] overflow-hidden bg-surface-alt ${index === 0 ? "rounded-t-[44%] rounded-b-2xl" : "rounded-[20px]"}`}
+                >
+                  <Image
+                    src={coffee.image}
+                    alt={coffee.alt}
+                    fill
+                    sizes="(max-width:767px) 100vw, 33vw"
+                    quality={80}
+                    style={{ objectPosition: coffee.position }}
+                    className="motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.025]"
+                  />
+                </div>
                 <span className="absolute left-4 top-4 grid size-9 place-items-center rounded-full border border-white/50 bg-canvas/95 font-sans text-xs font-semibold text-ink">
                   0{index + 1}
                 </span>
