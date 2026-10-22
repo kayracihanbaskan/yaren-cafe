@@ -1,3 +1,4 @@
+import { site } from "@/lib/site";
 import { SiteHeader } from "@/components/layout/site-header";
 import { RevealController } from "@/components/motion/reveal-controller";
 import { Hero } from "@/features/home/hero";
@@ -9,6 +10,30 @@ import { Motif } from "@/components/ui/icons";
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebSite",
+                "@id": new URL("/#website", site.url).href,
+                name: "Yâren",
+                url: site.url.href,
+                inLanguage: "tr-TR",
+                description: site.description,
+              },
+              {
+                "@type": "Brand",
+                name: "Yâren",
+                slogan: "Her fincanda ortak bir hikâye.",
+                logo: new URL("/brand/logo.svg", site.url).href,
+              },
+            ],
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
       <SiteHeader />
       <main id="icerik">
         <Hero />
