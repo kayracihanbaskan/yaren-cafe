@@ -15,7 +15,7 @@ test("search metadata uses the production identity and working brand assets", as
   const canonical = await page
     .locator('link[rel="canonical"]')
     .getAttribute("href");
-  expect(new URL(canonical!).href).toBe(new URL(origin).href);
+  expect(new URL(canonical!).href).toBe(new URL("/tr", origin).href);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
     /^https?:\/\//,
@@ -28,8 +28,8 @@ test("search metadata uses the production identity and working brand assets", as
     "/icon.svg",
     "/icon.png",
     "/apple-icon.png",
-    "/opengraph-image.png",
-    "/twitter-image.png",
+    "/brand/og-tr.png",
+    "/brand/og-en.png",
     "/brand/logo.svg",
   ]) {
     const response = await request.get(asset);
@@ -49,7 +49,10 @@ test("crawler endpoints point at the canonical homepage", async ({
 }) => {
   const sitemap = await request.get("/sitemap.xml");
   expect(sitemap.status()).toBe(200);
-  expect(await sitemap.text()).toContain(`<loc>${origin}/</loc>`);
+  const entries = await sitemap.text();
+  expect(entries).toContain(`<loc>${origin}/tr</loc>`);
+  expect(entries).toContain(`<loc>${origin}/en</loc>`);
+  expect(entries).toContain('hreflang="x-default"');
   const robots = await request.get("/robots.txt");
   expect(robots.status()).toBe(200);
   expect(await robots.text()).toContain("Allow: /");
@@ -78,6 +81,10 @@ test("form stays inactive when JavaScript is disabled", async ({ browser }) => {
   const page = await context.newPage();
   await page.goto("/");
   await expect(page.getByRole("form")).toBeHidden();
-  await expect(page.locator("noscript .form-note")).toBeVisible();
+  await expect(
+    page.locator("noscript p").filter({
+      hasText: "Formu kullanmak için JavaScript’i etkinleştirebilirsin.",
+    }),
+  ).toBeVisible();
   await context.close();
 });

@@ -41,7 +41,11 @@ test("contact errors guide focus and a valid submission honestly completes the d
   );
   await expect(page.getByRole("status")).toContainText("gönderilmedi");
   expect(posts).toEqual([]);
-  expect(await page.evaluate(() => localStorage.length)).toBe(0);
+  expect(
+    await page.evaluate(() =>
+      Object.keys(localStorage).filter((key) => key !== "yaren-theme"),
+    ),
+  ).toEqual([]);
   await page.getByRole("button", { name: "Yeni bir mesaj yaz" }).click();
   await expect(
     form.getByRole("textbox", { name: "Adın", exact: true }),

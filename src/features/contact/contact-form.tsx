@@ -1,19 +1,21 @@
 "use client";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { ArrowIcon, Motif } from "@/components/ui/icons";
+import { ArrowIcon, CupIllustration, Rosette } from "@/components/ui/icons";
+import { primaryButton, secondaryButton } from "@/components/ui/button";
 import {
   validateContact,
   type ContactErrors,
   type ContactValues,
 } from "./validation";
-
-export function ContactForm() {
+import type { Messages } from "@/i18n/types";
+const inputClass =
+  "w-full min-w-0 rounded-2xl border border-control bg-canvas px-4 py-3.5 text-base leading-relaxed text-ink placeholder:text-muted aria-invalid:border-copper focus:border-olive";
+export function ContactForm({ copy }: { copy: Messages["contact"] }) {
   const [errors, setErrors] = useState<ContactErrors>({});
   const [complete, setComplete] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
   const didSubmit = useRef(false);
-
   useEffect(() => {
     if (complete) statusRef.current?.focus();
     else if (didSubmit.current)
@@ -21,7 +23,6 @@ export function ContactForm() {
         ?.querySelector<HTMLInputElement>("#contact-name")
         ?.focus();
   }, [complete]);
-
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
@@ -34,7 +35,7 @@ export function ContactForm() {
     const nextErrors = validateContact(values);
     const emailInput = form.elements.namedItem("email") as HTMLInputElement;
     if (!nextErrors.email && emailInput.validity.typeMismatch)
-      nextErrors.email = "Geçerli bir e-posta adresi yazabilir misin?";
+      nextErrors.email = "invalid_email";
     setErrors(nextErrors);
     const firstInvalid = (
       Object.keys(nextErrors) as (keyof ContactValues)[]
@@ -47,117 +48,142 @@ export function ContactForm() {
     form.reset();
     setComplete(true);
   }
-
+  const fields = [
+    {
+      name: "name",
+      label: copy.name,
+      placeholder: copy.namePlaceholder,
+      type: "text",
+      autoComplete: "name",
+      error: copy.errors.nameRequired,
+      maxLength: 100,
+    },
+    {
+      name: "email",
+      label: copy.email,
+      placeholder: copy.emailPlaceholder,
+      type: "email",
+      autoComplete: "email",
+      error:
+        errors.email === "invalid_email"
+          ? copy.errors.emailInvalid
+          : copy.errors.emailRequired,
+      maxLength: 254,
+    },
+  ] as const;
   return (
     <>
-      <p className="form-note" id="form-demo-note">
-        Küçük bir tanışma provası. Bu örnek form mesaj göndermez ve bilgilerini
-        kaydetmez.
-      </p>
-      <noscript>
-        <p className="form-note">
-          Formu kullanmak için JavaScript’i etkinleştirebilirsin.
+      <div className="mb-6 flex items-start justify-between gap-4 border-b border-line pb-6">
+        <Rosette className="size-10 shrink-0 text-copper" />
+        <p
+          className="max-w-sm text-xs leading-relaxed text-muted"
+          id="form-demo-note"
+        >
+          {copy.note}
         </p>
+      </div>
+      <noscript>
+        <p className="text-sm text-muted">{copy.noJs}</p>
         <style>{`.contact-form { display: none; }`}</style>
       </noscript>
       {complete ? (
-        <div
-          className="form-success"
-          role="status"
-          tabIndex={-1}
-          ref={statusRef}
-        >
-          <Motif />
-          <h3>Mesajın hazır, teşekkürler!</h3>
-          <p>
-            Bu bir demo olduğu için mesajın gönderilmedi ve bilgilerin
-            kaydedilmedi. Gerçek bir sohbette görüşmek üzere.
+        <div className="py-5" role="status" tabIndex={-1} ref={statusRef}>
+          <CupIllustration className="mx-auto mb-5 h-36 w-40 text-copper" />
+          <h3 className="text-3xl leading-tight">{copy.successTitle}</h3>
+          <p className="mt-5 text-base leading-[1.8] text-muted">
+            {copy.successBody}
           </p>
           <button
             type="button"
-            className="text-link"
+            className={`${secondaryButton} mt-7`}
             onClick={() => {
               setErrors({});
               setComplete(false);
             }}
           >
-            Yeni bir mesaj yaz <ArrowIcon />
+            {copy.reset}
+            <ArrowIcon />
           </button>
         </div>
       ) : (
         <form
-          className="contact-form"
-          aria-label="Yâren iletişim formu"
+          className="contact-form space-y-6"
+          aria-label={copy.formLabel}
           aria-describedby="form-demo-note"
           noValidate
           onSubmit={handleSubmit}
           ref={formRef}
         >
-          <div className="form-field">
-            <label htmlFor="contact-name">
-              Adın <span aria-hidden="true">*</span>
-            </label>
-            <input
-              id="contact-name"
-              name="name"
-              autoComplete="name"
-              maxLength={100}
-              required
-              placeholder="Sana nasıl seslenelim?"
-              aria-invalid={Boolean(errors.name)}
-              aria-describedby={errors.name ? "name-error" : undefined}
-            />
-            {errors.name && (
-              <p className="field-error" id="name-error">
-                {errors.name}
-              </p>
-            )}
-          </div>
-          <div className="form-field">
-            <label htmlFor="contact-email">
-              E-posta adresin <span aria-hidden="true">*</span>
-            </label>
-            <input
-              id="contact-email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              maxLength={254}
-              required
-              placeholder="merhaba@ornek.com"
-              aria-invalid={Boolean(errors.email)}
-              aria-describedby={errors.email ? "email-error" : undefined}
-            />
-            {errors.email && (
-              <p className="field-error" id="email-error">
-                {errors.email}
-              </p>
-            )}
-          </div>
-          <div className="form-field">
-            <label htmlFor="contact-message">
-              Mesajın <span aria-hidden="true">*</span>
+          {fields.map((field) => (
+            <div key={field.name}>
+              <label
+                className="mb-2 block text-sm font-medium"
+                htmlFor={`contact-${field.name}`}
+              >
+                {field.label}{" "}
+                <span className="text-copper" aria-hidden="true">
+                  *
+                </span>
+              </label>
+              <input
+                className={inputClass}
+                id={`contact-${field.name}`}
+                name={field.name}
+                type={field.type}
+                autoComplete={field.autoComplete}
+                maxLength={field.maxLength}
+                required
+                placeholder={field.placeholder}
+                aria-invalid={Boolean(errors[field.name])}
+                aria-describedby={
+                  errors[field.name] ? `${field.name}-error` : undefined
+                }
+              />
+              {errors[field.name] && (
+                <p
+                  className="mt-2 text-sm leading-relaxed text-ink"
+                  id={`${field.name}-error`}
+                >
+                  {field.error}
+                </p>
+              )}
+            </div>
+          ))}
+          <div>
+            <label
+              className="mb-2 block text-sm font-medium"
+              htmlFor="contact-message"
+            >
+              {copy.message}{" "}
+              <span className="text-copper" aria-hidden="true">
+                *
+              </span>
             </label>
             <textarea
+              className={`${inputClass} min-h-36 resize-y`}
               id="contact-message"
               name="message"
-              rows={3}
+              rows={4}
               maxLength={2000}
               required
-              placeholder="Hikâyeni duymak isteriz…"
+              placeholder={copy.messagePlaceholder}
               aria-invalid={Boolean(errors.message)}
               aria-describedby={errors.message ? "message-error" : undefined}
             />
             {errors.message && (
-              <p className="field-error" id="message-error">
-                {errors.message}
+              <p
+                className="mt-2 text-sm leading-relaxed text-ink"
+                id="message-error"
+              >
+                {copy.errors.messageRequired}
               </p>
             )}
           </div>
-          <div className="form-bottom">
-            <span>* Tüm alanlar gerekli.</span>
-            <button className="button button-primary" type="submit">
-              Mesajı Gönder <ArrowIcon />
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-1">
+            <span className="text-xs text-muted">* {copy.required}</span>
+            <button className={primaryButton} type="submit">
+              {copy.submit}
+              <ArrowIcon />
             </button>
           </div>
         </form>

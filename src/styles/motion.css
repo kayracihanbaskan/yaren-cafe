@@ -1,0 +1,90 @@
+@keyframes courtyard-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes story-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes story-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+@keyframes backdrop-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes steam-drift {
+  0% {
+    opacity: 0.15;
+    transform: translateY(5px);
+  }
+  50% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0.25;
+    transform: translateY(-5px);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-enter {
+    animation: courtyard-enter 750ms var(--ease-courtyard) both;
+  }
+  .hero-stagger-1 {
+    animation-delay: 80ms;
+  }
+  .hero-stagger-2 {
+    animation-delay: 160ms;
+  }
+  .hero-stagger-3 {
+    animation-delay: 240ms;
+  }
+  [data-reveal] {
+    transition:
+      opacity 600ms var(--ease-courtyard),
+      transform 600ms var(--ease-courtyard);
+  }
+  [data-reveal="pending"] {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  [data-reveal]:focus-within {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-enter .steam {
+    animation: steam-drift 2400ms ease-in-out 2 both;
+  }
+  .story-dialog[open] {
+    animation: story-enter 280ms var(--ease-courtyard) both;
+  }
+  .story-dialog[open]::backdrop {
+    animation: backdrop-enter 240ms ease both;
+  }
+  .story-dialog[data-closing="true"] {
+    animation: story-exit 180ms ease both;
+  }
+}

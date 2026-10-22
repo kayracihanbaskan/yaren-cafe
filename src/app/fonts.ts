@@ -2,27 +2,27 @@ import localFont from "next/font/local";
 export const serif = localFont({
   src: [
     {
-      path: "../../node_modules/@fontsource-variable/cormorant-garamond/files/cormorant-garamond-latin-wght-normal.woff2",
-      weight: "300 700",
+      path: "../../node_modules/@fontsource-variable/lora/files/lora-latin-wght-normal.woff2",
+      weight: "400 700",
       style: "normal",
     },
     {
-      path: "../../node_modules/@fontsource-variable/cormorant-garamond/files/cormorant-garamond-latin-ext-wght-normal.woff2",
-      weight: "300 700",
+      path: "../../node_modules/@fontsource-variable/lora/files/lora-latin-ext-wght-normal.woff2",
+      weight: "400 700",
       style: "normal",
     },
     {
-      path: "../../node_modules/@fontsource-variable/cormorant-garamond/files/cormorant-garamond-latin-wght-italic.woff2",
-      weight: "300 700",
+      path: "../../node_modules/@fontsource-variable/lora/files/lora-latin-wght-italic.woff2",
+      weight: "400 700",
       style: "italic",
     },
     {
-      path: "../../node_modules/@fontsource-variable/cormorant-garamond/files/cormorant-garamond-latin-ext-wght-italic.woff2",
-      weight: "300 700",
+      path: "../../node_modules/@fontsource-variable/lora/files/lora-latin-ext-wght-italic.woff2",
+      weight: "400 700",
       style: "italic",
     },
   ],
-  variable: "--font-serif",
+  variable: "--font-heading",
   display: "swap",
   preload: false,
 });
@@ -39,7 +39,7 @@ export const sans = localFont({
       style: "normal",
     },
   ],
-  variable: "--font-sans",
+  variable: "--font-body",
   display: "swap",
   preload: false,
 });

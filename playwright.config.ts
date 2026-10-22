@@ -10,14 +10,32 @@ export default defineConfig({
   use: {
     baseURL: process.env.TEST_BASE_URL || "http://localhost:3100",
     trace: "retain-on-failure",
-    ...devices["Desktop Chrome"],
-    launchOptions: {
-      executablePath:
-        process.env.CHROMIUM_PATH ||
-        (existsSync("/usr/bin/chromium") ? "/usr/bin/chromium" : undefined),
-      args: ["--no-sandbox"],
-    },
   },
+  projects: [
+    {
+      name: "chromium",
+      testIgnore: "**/compatibility.spec.ts",
+      use: {
+        ...devices["Desktop Chrome"],
+        launchOptions: {
+          executablePath:
+            process.env.CHROMIUM_PATH ||
+            (existsSync("/usr/bin/chromium") ? "/usr/bin/chromium" : undefined),
+          args: ["--no-sandbox"],
+        },
+      },
+    },
+    {
+      name: "firefox",
+      testMatch: "**/compatibility.spec.ts",
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
+      name: "webkit",
+      testMatch: "**/compatibility.spec.ts",
+      use: { ...devices["Desktop Safari"] },
+    },
+  ],
   webServer: process.env.TEST_BASE_URL
     ? undefined
     : {

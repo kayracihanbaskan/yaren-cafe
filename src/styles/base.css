@@ -1,0 +1,141 @@
+@layer base {
+  html {
+    scroll-padding-top: calc(var(--header-height) + 20px);
+    scrollbar-gutter: stable;
+  }
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-body), sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading), Georgia, serif;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button,
+  summary,
+  select {
+    cursor: pointer;
+  }
+  button:disabled,
+  select:disabled {
+    cursor: default;
+  }
+  a,
+  button,
+  summary {
+    touch-action: manipulation;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--olive);
+    outline-offset: 5px;
+  }
+  footer :focus-visible {
+    outline-color: var(--on-footer);
+  }
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
+  ::selection {
+    background: var(--olive);
+    color: var(--on-primary);
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  img {
+    object-fit: cover;
+  }
+}
+.plaster {
+  background-image: url("/brand/plaster.svg");
+}
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  inset: 8px auto auto 16px;
+  transform: translateY(-150%);
+  border-radius: 999px;
+  background: var(--olive);
+  color: var(--on-primary);
+  padding: 12px 24px;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+.story-dialog {
+  position: fixed;
+  inset: auto 0 0;
+  margin: 0 auto;
+  padding: 0;
+  width: calc(100% - 16px);
+  max-width: 960px;
+  max-height: 88dvh;
+  border: 1px solid var(--line);
+  border-radius: 30px 30px 0 0;
+  background: var(--surface);
+  color: var(--ink);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: 0 35px 120px rgb(0 0 0 / 0.3);
+}
+.story-dialog::backdrop {
+  background: rgb(20 17 12 / 0.55);
+}
+@media (min-width: 768px) {
+  .story-dialog {
+    inset: 0;
+    margin: auto;
+    max-height: min(850px, 90dvh);
+    width: calc(100% - 64px);
+    border-radius: 32px;
+  }
+}
+.story-fallback {
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
