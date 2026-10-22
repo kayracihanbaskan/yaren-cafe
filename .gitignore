@@ -1,0 +1,38 @@
+# Dependencies and build outputs
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Secrets and hosting state
+.env*
+!.env.example
+.vercel/
+
+# Tests and local output
+coverage/
+playwright-report/
+test-results/
+blob-report/
+artifacts/
+tmp/
+output/
+*.log
+
+# Local planning, AI workspaces and reference material
+.superpowers/
+docs/superpowers/
+design-system/
+.worktrees/
+Yaren_Case_Study.pdf
+AGENTS.md
+CLAUDE.md
+
+# Editor and operating system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
