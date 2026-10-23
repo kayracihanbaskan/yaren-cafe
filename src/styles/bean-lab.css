@@ -8,7 +8,8 @@
 }
 .bean-playground {
   position: relative;
-  height: clamp(700px, calc(100svh - 95px), 1050px);
+  min-height: clamp(700px, calc(100svh - 95px), 1050px);
+  padding-bottom: 140px;
   overflow: clip;
 }
 .bean-playground:focus-visible {
@@ -179,10 +180,9 @@
   line-height: 1.2;
 }
 .bean-lab-controls {
-  position: absolute;
+  position: relative;
   z-index: 5;
-  left: max(56px, calc((100% - 1320px) / 2));
-  bottom: 130px;
+  margin-top: 22px;
 }
 .bean-button-row {
   display: flex;
@@ -360,9 +360,6 @@
     height: 23px;
     margin-bottom: 6px;
   }
-  .bean-lab-controls {
-    left: 28px;
-  }
   .bean-keyboard {
     right: 3%;
     max-width: 180px;
@@ -370,8 +367,7 @@
 }
 @media (max-width: 650px) {
   .bean-playground {
-    height: max(720px, calc(100svh - 72px));
-    max-height: 900px;
+    min-height: max(720px, calc(100svh - 72px));
   }
   .bean-lab-copy {
     padding-top: 48px;
@@ -414,10 +410,12 @@
     gap: 24px;
   }
   .bean-lab-badge {
+    position: relative;
     width: 100px;
     height: 100px;
-    top: 51%;
-    right: 7%;
+    top: auto;
+    right: auto;
+    margin: 24px 7% 0 auto;
     outline-offset: -6px;
     box-shadow: 3px 4px 0 var(--espresso);
     transform: rotate(12deg);
@@ -432,11 +430,6 @@
     width: 13px;
     height: 18px;
     margin-bottom: 3px;
-  }
-  .bean-lab-controls {
-    left: 20px;
-    right: 20px;
-    bottom: 140px;
   }
   .bean-button-row {
     gap: 7px;

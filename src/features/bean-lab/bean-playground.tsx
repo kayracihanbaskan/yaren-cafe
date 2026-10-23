@@ -268,7 +268,7 @@ export function BeanPlayground({
     >
       <canvas className="bean-canvas" ref={canvas} aria-hidden="true" />
       {children}
-      <div className="bean-lab-controls">
+      <div className="bean-lab-controls section-shell">
         <p className="bean-pause-status" role="status">
           {playing ? "" : copy.paused}
         </p>
