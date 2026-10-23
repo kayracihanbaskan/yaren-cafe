@@ -1,5 +1,60 @@
 type ArtProps = { className?: string };
 
+/** The two cups meet as a single coffee-stain ring closes around them. */
+export function MeetingCups() {
+  return (
+    <svg
+      className="meeting-cups"
+      viewBox="0 0 320 260"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        className="hatir-ring"
+        pathLength="1"
+        d="M303 151c4 57-54 102-137 105C80 259 13 219 14 159 15 100 77 57 158 58c81-2 143 39 145 93Z"
+        stroke="var(--copper)"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeDasharray="1"
+      />
+      <g
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <g className="meeting-cup meeting-cup-left">
+          <g transform="translate(10 25) rotate(-12 85 140)">
+            <ellipse cx="80" cy="178" rx="64" ry="12" />
+            <path
+              d="M33 104h86v26c0 32-20 44-43 44s-43-16-43-44Z"
+              fill="var(--cream)"
+            />
+            <ellipse cx="76" cy="105" rx="43" ry="9" fill="var(--copper)" />
+            <path d="M120 114c44-15 39 43-9 34M56 135l9 6m22-6 9-6m-31 21q13 10 25-3M68 75c-19-19 17-22 5-39" />
+          </g>
+        </g>
+        <g className="meeting-cup meeting-cup-right">
+          <g transform="translate(10 25) rotate(12 215 140)">
+            <ellipse cx="216" cy="178" rx="64" ry="12" />
+            <path
+              d="M174 104h86v26c0 32-20 44-43 44s-43-16-43-44Z"
+              fill="var(--cream)"
+            />
+            <ellipse cx="217" cy="105" rx="43" ry="9" fill="var(--copper)" />
+            <path d="M174 114c-44-15-39 43 9 34M196 133l8 5m22-4 8-5m-30 20q13 10 25-3M217 75c-19-19 17-22 5-39" />
+          </g>
+        </g>
+        <path
+          className="meeting-spark"
+          d="m150 70 12-19 9 20 21 5-20 10-9 24-8-24-20-7 15-9Z"
+        />
+      </g>
+    </svg>
+  );
+}
+
 export function Spark({ className = "" }: ArtProps) {
   return (
     <svg

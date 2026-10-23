@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { RevealController } from "@/components/motion/reveal-controller";
+import { ScrollCraftController } from "@/components/motion/scroll-craft-controller";
 import { Hero, CoffeeTicker } from "@/features/home/hero";
 import { Manifesto } from "@/features/home/manifesto";
 import { ContactSection } from "@/features/home/contact-section";
@@ -62,6 +63,7 @@ export default async function Home({
       </main>
       <SiteFooter copy={design} />
       <RevealController />
+      <ScrollCraftController />
     </>
   );
 }

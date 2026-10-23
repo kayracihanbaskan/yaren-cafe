@@ -29,6 +29,14 @@ Başlangıç kolajını marka manifestosu, üç kahvelik seçki, her kahveye ait
 
 Form; boş alanları, yalnızca boşluk içeren değerleri ve geçersiz e-posta biçimini kontrol eder. Hatalar ilgili alana bağlanır, ilk hatalı alan odaklanır. Başarı ekranı bunun bir demo olduğunu ve mesajın gönderilmediğini açıkça belirtir. Sunucu isteği veya kişisel veri saklama yapılmaz.
 
+## Scroll Craft denemesi
+
+Mevcut sayfanın dört bölümüne kaydırma etkileşimleri eklendi: hero fotoğrafı, arka zemin, buhar ve damga bağımsız derinlik katmanlarıdır; manifesto başlığı yerleşir ve atasözünün altı çizilir; kahve seçkisi masaüstünde dikey kaydırmayla yatay ilerler; ritüel fotoğrafı açılırken iki fincan yaklaşır ve özgün hatır halkası tamamlanır. Kahve hikâyeleri, iletişim formu ve kapanış normal belge akışında kalır.
+
+1000 px genişlik ve 760 px yükseklik altındaki ekranlarda sabitleme kullanılmaz; kahveler doğal yatay kaydırma ve önceki/sonraki düğmeleriyle gezilir. Bütün ürünler zaten görünüyorsa gereksiz yön düğmeleri gösterilmez. Klavye odağı ilgili kahveyi görünür alana getirir. Hareket azaltma tercihinde sabitlemeler ve dönüşümler kalkar, koleksiyon normal ızgaraya döner; ilk açılışta hareket motoru indirilmez. JavaScript kapalıyken içerik normal akışta okunur.
+
+Scroll Craft motoru değiştirilmeden `public/vendor/scrollcraft/` içine alındı. Next.js bağlantısı ve yaşam döngüsü `src/components/motion/scroll-craft-controller.tsx`, projeye özel koreografi `src/styles/scroll-scenes.css` içindedir. Yeni fotoğraf veya video üretilmedi, yeni bağımlılık eklenmedi. Yerel brief, skor ve ekran şeritleri git dışında tutulan `scrollcraft/builds/yaren-scroll-study/` klasöründedir.
+
 ## Görsel kaynakları ve araçlar
 
 - Apocalypse Coffee yalnızca yaratıcı kalite, tipografik ölçek ve kompozisyon araştırması için incelendi; markası veya görselleri kullanılmadı.

@@ -1,5 +1,7 @@
 @import "tailwindcss";
+@import "../../public/vendor/scrollcraft/scrollcraft.css";
 @import "../styles/theme.css";
 @import "../styles/base.css";
 @import "../styles/motion.css";
 @import "../styles/editorial.css";
+@import "../styles/scroll-scenes.css";

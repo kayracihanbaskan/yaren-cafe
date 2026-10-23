@@ -7,15 +7,19 @@ export function Manifesto({ copy }: { copy: DesignCopy }) {
       id="hikayemiz"
       className="manifesto dark-paper torn-edge"
       aria-labelledby="story-title"
+      data-sc-act="flow"
     >
       <div className="section-shell">
-        <p className="eyebrow">{copy.manifestoLabel}</p>
         <div className="manifesto-grid">
-          <div className="manifesto-heading" data-reveal>
+          <div className="manifesto-heading">
             <h2 id="story-title" tabIndex={-1}>
-              {copy.manifesto[0]}
+              <span className="manifesto-line manifesto-line-one">
+                {copy.manifesto[0]}
+              </span>
               <br />
-              <em>{copy.manifesto[1]}</em>
+              <em className="manifesto-line manifesto-line-two">
+                {copy.manifesto[1]}
+              </em>
             </h2>
             <CezveArt className="manifesto-cezve" />
           </div>
@@ -25,7 +29,7 @@ export function Manifesto({ copy }: { copy: DesignCopy }) {
             <p>{copy.manifestoBody}</p>
           </div>
         </div>
-        <div className="proverb" data-reveal>
+        <div className="proverb">
           <span aria-hidden="true">“</span>
           <blockquote>{copy.proverb}</blockquote>
           <p>{copy.manifestoNote}</p>

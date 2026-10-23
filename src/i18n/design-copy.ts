@@ -25,25 +25,27 @@ const tr = {
     "BİR FİNCAN DAHA?",
     "İYİ Kİ GELDİN",
   ],
-  manifestoLabel: "01 / YÂREN OLMAK",
+  manifestoLabel: "YÂREN OLMAK",
   manifesto: ["Bir fincan,", "bin hikâye."],
   manifestoIntro: "Yâren; dost, yol arkadaşı, aynı masada buluşan demek.",
   manifestoBody:
     "Bizim için kahve, bir içecekten biraz fazlası. Bazen eski bir dostla kaldığın yerden devam etmek, bazen kendine ayırdığın küçücük bir mola. Köklerimizden aldığımız sıcaklığı, bugünün kahve merakıyla aynı fincanda buluşturuyoruz.",
   proverb: "Bir fincan kahvenin kırk yıl hatırı vardır.",
   manifestoNote: "Biz o hatırın peşindeyiz.",
-  collectionLabel: "02 / FİNCANINI SEÇ",
+  collectionLabel: "FİNCANINI SEÇ",
   collection: ["Üç kahve.", "Üç hikâye."],
   collectionIntro:
     "Aynı masanın farklı karakterleri. Bugün hangi hikâyeye ortaksın?",
   collectionNote: "Fiyatlar örnek menümüze aittir.",
+  previousCoffee: "Önceki kahve",
+  nextCoffee: "Sonraki kahve",
   storyLink: "Hikâyesine bak",
   productLabels: [
     "KIRK YILLIK HATIR",
     "KÜÇÜK AMA GÜÇLÜ",
     "YAVAŞLA, TADINI ÇIKAR",
   ],
-  storiesLabel: "03 / ÇEKİRDEKTEN HİKÂYEYE",
+  storiesLabel: "ÇEKİRDEKTEN HİKÂYEYE",
   stories: [
     {
       id: "turk-kahvesi",
@@ -70,14 +72,14 @@ const tr = {
       detail: "YAVAŞ DEMLEME · YUMUŞAK İÇİM",
     },
   ],
-  ritualLabel: "04 / EN GÜZEL RİTÜEL: BİRLİKTE",
+  ritualLabel: "EN GÜZEL RİTÜEL: BİRLİKTE",
   ritual: ["Gönül", "sohbet ister,", "kahve bahane."],
   ritualBody:
     "Masanın bir ucunda sen, diğer ucunda bir yâren. İki fincan arasına sığan onca şey… Bazen ihtiyacımız olan tam da bu.",
   ritualAlt:
     "Ceviz masada iki dostun paylaştığı, lokum ve suyla sunulan iki fincan Türk kahvesi",
   ritualNote: "Bir sana, bir bana.",
-  contactLabel: "05 / SOHBET BURADAN BAŞLASIN",
+  contactLabel: "SOHBET BURADAN BAŞLASIN",
   contact: ["Bir kahve,", "bir merhaba?"],
   contactBody:
     "Aklında bir soru, anlatacak bir hikâye ya da sadece bir merhaba mı var? Masamızda sana da yer var.",
@@ -116,7 +118,7 @@ const en: DesignCopy = {
     "ONE MORE CUP?",
     "GLAD YOU'RE HERE",
   ],
-  manifestoLabel: "01 / THE MEANING OF YÂREN",
+  manifestoLabel: "THE MEANING OF YÂREN",
   manifesto: ["One cup,", "a thousand stories."],
   manifestoIntro:
     "Yâren means a friend, a companion, someone to share a table with.",
@@ -124,18 +126,20 @@ const en: DesignCopy = {
     "To us, coffee is a little more than a drink. It is picking up where you left off with an old friend, or taking a small moment for yourself. We bring the warmth of our roots and the curiosity of today's coffee culture together in one cup.",
   proverb: "A cup of coffee is remembered for forty years.",
   manifestoNote: "That is the kind of connection we brew.",
-  collectionLabel: "02 / CHOOSE YOUR CUP",
+  collectionLabel: "CHOOSE YOUR CUP",
   collection: ["Three coffees.", "Three stories."],
   collectionIntro:
     "Different characters at the same table. Which story feels like yours today?",
   collectionNote: "Prices are examples from our illustrative menu.",
+  previousCoffee: "Previous coffee",
+  nextCoffee: "Next coffee",
   storyLink: "Explore the story",
   productLabels: [
     "FORTY YEARS OF FRIENDSHIP",
     "SMALL BUT MIGHTY",
     "SLOW DOWN. SIP SLOWLY.",
   ],
-  storiesLabel: "03 / FROM BEAN TO STORY",
+  storiesLabel: "FROM BEAN TO STORY",
   stories: [
     {
       id: "turk-kahvesi",
@@ -162,14 +166,14 @@ const en: DesignCopy = {
       detail: "SLOW BREW · SMOOTH SIP",
     },
   ],
-  ritualLabel: "04 / OUR FAVOURITE RITUAL: TOGETHER",
+  ritualLabel: "OUR FAVOURITE RITUAL: TOGETHER",
   ritual: ["The heart", "wants company,", "coffee helps."],
   ritualBody:
     "You at one end of the table, a friend at the other. All the things that fit between two cups. Sometimes, this is all we need.",
   ritualAlt:
     "Two friends sharing two small cups of Turkish coffee with water and Turkish delight on a walnut table",
   ritualNote: "One for you, one for me.",
-  contactLabel: "05 / LET'S START A CONVERSATION",
+  contactLabel: "LET'S START A CONVERSATION",
   contact: ["A coffee,", "a hello?"],
   contactBody:
     "A question, a story to tell, or just a hello? There is always a place for you at our table.",

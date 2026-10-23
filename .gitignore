@@ -36,3 +36,6 @@ CLAUDE.md
 .DS_Store
 Thumbs.db
 *.swp
+
+# Local Scroll Craft briefs and visual verification
+/scrollcraft/

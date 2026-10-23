@@ -43,11 +43,6 @@ export function CoffeeStories({
                 )}
               </div>
               <div className="story-text">
-                <p className="eyebrow">
-                  {index === 0
-                    ? copy.storiesLabel
-                    : `0${index + 1} / ${story.label}`}
-                </p>
                 <span className="story-label">{story.label}</span>
                 <h2 id={`story-heading-${story.id}`} data-reveal>
                   {story.title[0]}
@@ -62,9 +57,6 @@ export function CoffeeStories({
                   <span>{story.detail}</span>
                 </div>
               </div>
-              <span className="story-index" aria-hidden="true">
-                0{index + 1}
-              </span>
             </div>
           </section>
         );

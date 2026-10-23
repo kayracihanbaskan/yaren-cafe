@@ -16,7 +16,12 @@ export function Hero({
   english: boolean;
 }) {
   return (
-    <section id="baslangic" className="hero paper" aria-labelledby="hero-title">
+    <section
+      id="baslangic"
+      className="hero paper"
+      aria-labelledby="hero-title"
+      data-sc-act="flow"
+    >
       <div className="hero-inner section-shell">
         <p className="eyebrow hero-eyebrow">
           <span className="status-dot" />
@@ -33,22 +38,29 @@ export function Hero({
           </span>
         </h1>
         <div className="hero-visual">
-          <div className="hero-blob" aria-hidden="true" />
-          <SteamArt className="hero-steam" />
-          <Image
-            src="/images/coffee-cutout.webp"
-            alt={copy.heroAlt}
-            width={1254}
-            height={1254}
-            className="hero-coffee"
-            sizes="(max-width: 600px) 100vw, (max-width: 1000px) 65vw, 55vw"
-            preload
-            quality={85}
-          />
-          <FortySeal className="hero-seal" english={english} />
-          <Spark className="hero-spark" />
-          <Bean className="hero-bean bean-one" />
-          <Bean className="hero-bean bean-two" />
+          <div className="hero-plane hero-plane-back" data-sc-parallax="-1">
+            <div className="hero-blob" aria-hidden="true" />
+          </div>
+          <div className="hero-plane hero-plane-air" data-sc-parallax="-1.6">
+            <SteamArt className="hero-steam" />
+            <Spark className="hero-spark" />
+            <Bean className="hero-bean bean-one" />
+          </div>
+          <div className="hero-plane hero-plane-subject" data-sc-parallax="0.8">
+            <Image
+              src="/images/coffee-cutout.webp"
+              alt={copy.heroAlt}
+              width={1254}
+              height={1254}
+              className="hero-coffee"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 65vw, 55vw"
+              preload
+              quality={85}
+            />
+          </div>
+          <div className="hero-plane hero-plane-front" data-sc-parallax="1.3">
+            <FortySeal className="hero-seal" english={english} />
+          </div>
           <div className="hero-annotation">
             <span>{copy.heroNote}</span>
             <svg viewBox="0 0 100 60" fill="none" aria-hidden="true">
@@ -69,10 +81,6 @@ export function Hero({
             <ArrowIcon diagonal />
           </a>
         </div>
-        <a href="#hikayemiz" className="hero-scroll">
-          <span>{copy.scroll}</span>
-          <span aria-hidden="true">↓</span>
-        </a>
       </div>
     </section>
   );
