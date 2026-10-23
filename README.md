@@ -37,6 +37,14 @@ Mevcut sayfanın dört bölümüne kaydırma etkileşimleri eklendi: hero fotoğ
 
 Scroll Craft motoru değiştirilmeden `public/vendor/scrollcraft/` içine alındı. Next.js bağlantısı ve yaşam döngüsü `src/components/motion/scroll-craft-controller.tsx`, projeye özel koreografi `src/styles/scroll-scenes.css` içindedir. Yeni fotoğraf veya video üretilmedi, yeni bağımlılık eklenmedi. Yerel brief, skor ve ekran şeritleri git dışında tutulan `scrollcraft/builds/yaren-scroll-study/` klasöründedir.
 
+## Çekirdek oyun alanı
+
+Çekirdek sahnesi `/tr#cekirdek-masasi` ve `/en#cekirdek-masasi` adreslerinde ana sayfanın parçasıdır; kahve hikâyeleri ile ritüeller arasında yer alır. Ayrı sayfa veya menü girdisi yoktur. Alanın en az %20’si görünür olduğunda yağmur başlar. Metin üzerinde opak dikdörtgen yüzeyler bulunmaz; Canvas üzerindeki yumuşak alfa geçişi yazının çevresindeki çekirdekleri hafifletir. Fotoğraf gerçekliğindeki çekirdekler yukarıdan dökülür, çarpışır, döner ve zeminde birikir; fare hareketi veya parmak dokunuşu ve yatay savurma ile yeniden havalanır. Dikey dokunma kaydırması ve yakınlaştırma korunur.
+
+“Durdur / Başlat”, “Yeniden dök” ve “Karıştır” düğmeleri çalışır. Oyun alanı odaktayken boşluk hareketi durdurur, sağ/sol oklar çekirdekleri savurur. Hareket azaltma tercihinde ilk görünüm durgundur; kullanıcı düğmeyle hareketi başlatabilir. Görünmeyen sekmede ve alan ekran dışına çıktığında fizik döngüsü durur. Başlangıçta telefonda 38, büyük ekranda 76 gövde kullanılır; yeniden dökme sayıyı artırmaz.
+
+Fizik ve Canvas çizimi `src/features/bean-lab/` içinde bağımsız tutulur. Yeni fizik kütüphanesi eklenmedi. `public/images/coffee-bean.webp`, yerleşik ImageGen ile bu çalışma için üretilen saydam çekirdek görselidir; Sharp ile 185×256 piksel ve yaklaşık 26 KB WebP dosyasına indirildi. Son kaynak Chromium'da 375/768/1440 px, fare, dokunma emülasyonu, klavye ve azaltılmış hareket ile kontrol edildi; gerçek cihaz testi yapılmadı.
+
 ## Görsel kaynakları ve araçlar
 
 - Apocalypse Coffee yalnızca yaratıcı kalite, tipografik ölçek ve kompozisyon araştırması için incelendi; markası veya görselleri kullanılmadı.

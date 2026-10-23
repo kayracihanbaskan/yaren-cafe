@@ -12,6 +12,7 @@ import { ContactSection } from "@/features/home/contact-section";
 import { CoffeeCollection } from "@/features/coffee/coffee-collection";
 import { CoffeeStories } from "@/features/coffee/coffee-stories";
 import { Rituals } from "@/features/home/rituals";
+import { BeanMoment } from "@/features/bean-lab/bean-moment";
 import { getDesignCopy } from "@/i18n/design-copy";
 import { localizeCoffees } from "@/features/coffee/coffee-data";
 export default async function Home({
@@ -58,6 +59,7 @@ export default async function Home({
         <Manifesto copy={design} />
         <CoffeeCollection coffees={coffees} copy={design} />
         <CoffeeStories copy={design} coffees={coffees} />
+        <BeanMoment locale={locale} />
         <Rituals copy={design} />
         <ContactSection copy={copy.contact} design={design} />
       </main>

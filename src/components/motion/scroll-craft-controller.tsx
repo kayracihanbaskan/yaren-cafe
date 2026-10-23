@@ -58,6 +58,7 @@ export function ScrollCraftController() {
     );
     let instance: ScrollInstance | undefined;
     let positionFrame = 0;
+    let anchorFrame = 0;
     let readingPosition: { element: HTMLElement; top: number } | undefined;
     const sections = Array.from(
       root.querySelectorAll<HTMLElement>("section[id]"),
@@ -107,6 +108,7 @@ export function ScrollCraftController() {
 
     function sync() {
       cancelAnimationFrame(positionFrame);
+      cancelAnimationFrame(anchorFrame);
       const section = positioned.current ? readingPosition?.element : undefined;
       const previousTop = readingPosition?.top;
       restore();
@@ -131,11 +133,17 @@ export function ScrollCraftController() {
       if (ritual) ritual.dataset.scAct = wide ? "pin" : "flow";
       if (!wide) rail?.removeAttribute("data-sc-pan");
       instance = window.ScrollCraft!.mount(root!);
-      // Anchors can arrive before enhancement changes the document height.
-      if (!positioned.current && location.hash)
-        document
-          .getElementById(location.hash.slice(1))
-          ?.scrollIntoView({ behavior: "instant" });
+      // The browser can apply a queued scroll adjustment after pin heights
+      // change. Align the initial anchor once the new layout has committed.
+      if (!positioned.current && location.hash) {
+        const target = document.getElementById(location.hash.slice(1));
+        anchorFrame = requestAnimationFrame(() => {
+          anchorFrame = requestAnimationFrame(() => {
+            target?.scrollIntoView({ behavior: "instant" });
+            rememberPosition();
+          });
+        });
+      }
       else if (section && previousTop !== undefined)
         window.scrollBy({
           top: section.getBoundingClientRect().top - previousTop,
@@ -183,6 +191,7 @@ export function ScrollCraftController() {
       root.removeEventListener("focusin", focusCard);
       window.removeEventListener("scroll", trackPosition);
       cancelAnimationFrame(positionFrame);
+      cancelAnimationFrame(anchorFrame);
       restore();
     };
   }, [ready]);
