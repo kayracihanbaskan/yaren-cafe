@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { ArrowIcon, CupIllustration, Rosette } from "@/components/ui/icons";
+import { ArrowIcon } from "@/components/ui/icons";
+import { FriendshipArt, Spark } from "@/components/brand/coffee-art";
 import { primaryButton, secondaryButton } from "@/components/ui/button";
 import {
   validateContact,
@@ -74,7 +75,7 @@ export function ContactForm({ copy }: { copy: Messages["contact"] }) {
   return (
     <>
       <div className="mb-6 flex items-start justify-between gap-4 border-b border-line pb-6">
-        <Rosette className="size-10 shrink-0 text-copper" />
+        <Spark className="size-10 shrink-0 text-olive" />
         <p
           className="max-w-sm text-xs leading-relaxed text-muted"
           id="form-demo-note"
@@ -88,7 +89,7 @@ export function ContactForm({ copy }: { copy: Messages["contact"] }) {
       </noscript>
       {complete ? (
         <div className="py-5" role="status" tabIndex={-1} ref={statusRef}>
-          <CupIllustration className="mx-auto mb-5 h-36 w-40 text-copper" />
+          <FriendshipArt className="mx-auto mb-5 h-36 w-48 text-olive" />
           <h3 className="text-3xl leading-tight">{copy.successTitle}</h3>
           <p className="mt-5 text-base leading-[1.8] text-muted">
             {copy.successBody}
@@ -143,6 +144,7 @@ export function ContactForm({ copy }: { copy: Messages["contact"] }) {
                 <p
                   className="mt-2 text-sm leading-relaxed text-ink"
                   id={`${field.name}-error`}
+                  role="alert"
                 >
                   {field.error}
                 </p>
@@ -174,6 +176,7 @@ export function ContactForm({ copy }: { copy: Messages["contact"] }) {
               <p
                 className="mt-2 text-sm leading-relaxed text-ink"
                 id="message-error"
+                role="alert"
               >
                 {copy.errors.messageRequired}
               </p>

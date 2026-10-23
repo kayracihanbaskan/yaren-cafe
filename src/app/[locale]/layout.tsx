@@ -4,7 +4,6 @@ import { serif, sans } from "../fonts";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale } from "@/i18n/types";
 import { site } from "@/lib/site";
-import { ThemeProvider } from "@/components/preferences/theme-provider";
 import "../globals.css";
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -55,8 +54,8 @@ export async function generateMetadata({
   };
 }
 export const viewport: Viewport = {
-  themeColor: "#f7f2e9",
-  colorScheme: "light dark",
+  themeColor: "#F6F1E7",
+  colorScheme: "light",
 };
 export default async function LocaleLayout({
   children,
@@ -75,12 +74,10 @@ export default async function LocaleLayout({
       className={`${serif.variable} ${sans.variable}`}
     >
       <body>
-        <ThemeProvider>
-          <a href="#icerik" className="skip-link">
-            {copy.common.skip}
-          </a>
-          {children}
-        </ThemeProvider>
+        <a href="#icerik" className="skip-link">
+          {copy.common.skip}
+        </a>
+        {children}
       </body>
     </html>
   );

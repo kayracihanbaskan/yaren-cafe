@@ -1,40 +1,38 @@
+/* Font roles and Yâren brand tokens. Fonts are served locally. */
 :root {
-  --canvas: #f7f2e9;
-  --surface: #fffcf6;
-  --surface-alt: #efe8da;
-  --ink: #35271f;
-  --muted: #746457;
-  --olive: #4c5940;
-  --copper: #9a5e3f;
-  --line: #ded3c3;
-  --control: #8b7b66;
-  --on-primary: #fffcf6;
-  --grove: #45513b;
-  --on-grove: #f7f2e9;
-  --grove-muted: #dde3d4;
-  --footer: #352b23;
-  --on-footer: #f4ebdd;
-  --footer-muted: #d4c5b0;
-  --header-height: 88px;
+  --font-display: var(--font-manrope), Arial, sans-serif;
+  --font-accent: var(--font-lora), Georgia, serif;
+  --font-body: var(--font-manrope);
+  --font-heading: var(--font-lora);
+  --cream: #f6f1e7;
+  --espresso: #2b1d17;
+  --olive: #626b4f;
+  --walnut: #79543b;
+  --sand: #e8dccb;
+  --copper: #b78657;
+  --canvas: var(--cream);
+  --ink: var(--espresso);
+  --muted: #6d5f51;
+  --surface: var(--cream);
+  --surface-alt: var(--sand);
+  --line: #cfc2ae;
+  --control: var(--walnut);
+  --on-primary: var(--cream);
+  --shadow-sticker: 5px 5px 0 var(--espresso);
+  --space-section: clamp(76px, 8vw, 128px);
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 220ms;
+  --duration-reveal: 700ms;
+
+  --grove: var(--olive);
+  --on-grove: var(--cream);
+  --grove-muted: var(--sand);
+  --footer: var(--espresso);
+  --on-footer: var(--cream);
+  --footer-muted: var(--sand);
+  --header-height: 99px;
 }
-[data-theme="dark"] {
-  --canvas: #201d18;
-  --surface: #2c2922;
-  --surface-alt: #353127;
-  --ink: #f4ebdd;
-  --muted: #c1b5a4;
-  --olive: #b8c59d;
-  --copper: #d6a482;
-  --line: #4a4438;
-  --control: #8f8778;
-  --on-primary: #201d18;
-  --grove: #293425;
-  --on-grove: #f7f2e9;
-  --grove-muted: #d9e1cf;
-  --footer: #171611;
-  --on-footer: #f4ebdd;
-  --footer-muted: #c1b5a4;
-}
+
 @theme inline {
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);

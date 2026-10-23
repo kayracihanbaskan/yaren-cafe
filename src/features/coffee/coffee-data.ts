@@ -9,13 +9,13 @@ export const coffees: readonly Coffee[] = [
   },
   {
     id: "espresso",
-    price: 110,
+    price: 135,
     image: "/images/espresso-cup.webp",
     position: "center",
   },
   {
     id: "filtre-kahve",
-    price: 140,
+    price: 125,
     image: "/images/filter-coffee.webp",
     position: "53% center",
   },

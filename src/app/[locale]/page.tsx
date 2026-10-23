@@ -5,11 +5,13 @@ import { site } from "@/lib/site";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { RevealController } from "@/components/motion/reveal-controller";
-import { Hero } from "@/features/home/hero";
-import { Story } from "@/features/home/story";
+import { Hero, CoffeeTicker } from "@/features/home/hero";
+import { Manifesto } from "@/features/home/manifesto";
 import { ContactSection } from "@/features/home/contact-section";
 import { CoffeeCollection } from "@/features/coffee/coffee-collection";
-import { CoffeeFinder } from "@/features/coffee/coffee-finder";
+import { CoffeeStories } from "@/features/coffee/coffee-stories";
+import { Rituals } from "@/features/home/rituals";
+import { getDesignCopy } from "@/i18n/design-copy";
 import { localizeCoffees } from "@/features/coffee/coffee-data";
 export default async function Home({
   params,
@@ -19,6 +21,7 @@ export default async function Home({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const copy = await getDictionary(locale);
+  const design = getDesignCopy(locale);
   const coffees = localizeCoffees(copy);
   const structured = {
     "@context": "https://schema.org",
@@ -34,7 +37,7 @@ export default async function Home({
       {
         "@type": "Brand",
         name: "Yâren",
-        slogan: copy.hero.lines.join(" "),
+        slogan: design.slogan,
         logo: new URL("/brand/logo.svg", site.url).href,
       },
     ],
@@ -47,29 +50,17 @@ export default async function Home({
           __html: JSON.stringify(structured).replace(/</g, "\\u003c"),
         }}
       />
-      <SiteHeader locale={locale} nav={copy.nav} theme={copy.theme} />
+      <SiteHeader locale={locale} copy={design} />
       <main id="icerik">
-        <Hero copy={copy.hero} alt={copy.coffees["turk-kahvesi"].alt} />
-        <CoffeeCollection
-          coffees={coffees}
-          copy={copy.collection}
-          common={copy.common}
-        />
-        <CoffeeFinder
-          coffees={coffees}
-          copy={copy.finder}
-          common={copy.common}
-        />
-        <Story copy={copy.story} />
-        <ContactSection copy={copy.contact} />
+        <Hero copy={design} english={locale === "en"} />
+        <CoffeeTicker copy={design} />
+        <Manifesto copy={design} />
+        <CoffeeCollection coffees={coffees} copy={design} />
+        <CoffeeStories copy={design} coffees={coffees} />
+        <Rituals copy={design} />
+        <ContactSection copy={copy.contact} design={design} />
       </main>
-      <SiteFooter
-        locale={locale}
-        copy={copy.footer}
-        nav={copy.nav}
-        theme={copy.theme}
-        common={copy.common}
-      />
+      <SiteFooter copy={design} />
       <RevealController />
     </>
   );

@@ -22,7 +22,7 @@ export const serif = localFont({
       style: "italic",
     },
   ],
-  variable: "--font-heading",
+  variable: "--font-lora",
   display: "swap",
   preload: false,
 });
@@ -39,7 +39,7 @@ export const sans = localFont({
       style: "normal",
     },
   ],
-  variable: "--font-body",
+  variable: "--font-manrope",
   display: "swap",
   preload: false,
 });
