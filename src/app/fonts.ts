@@ -1,4 +1,12 @@
 import localFont from "next/font/local";
+export const displayFont = localFont({
+  src: "../assets/fonts/bricolage-grotesque-extrabold.woff2",
+  weight: "800",
+  style: "normal",
+  variable: "--font-bricolage",
+  display: "swap",
+  preload: true,
+});
 export const serif = localFont({
   src: [
     {

@@ -1,9 +1,14 @@
 /* Font roles and Yâren brand tokens. Fonts are served locally. */
 :root {
-  --font-display: var(--font-manrope), Arial, sans-serif;
+  --font-display: var(--font-bricolage), Arial, sans-serif;
   --font-accent: var(--font-lora), Georgia, serif;
   --font-body: var(--font-manrope);
-  --font-heading: var(--font-lora);
+  --font-heading: var(--font-display);
+  --type-body: 1rem;
+  --type-small: 0.875rem;
+  --type-label: 0.75rem;
+  --tracking-display: -0.02em;
+  --tracking-accent: -0.025em;
   --cream: #f6f1e7;
   --espresso: #2b1d17;
   --olive: #626b4f;
@@ -51,7 +56,7 @@
   --color-on-footer: var(--on-footer);
   --color-footer-muted: var(--footer-muted);
   --font-sans: var(--font-body);
-  --font-serif: var(--font-heading);
+  --font-serif: var(--font-accent);
   --radius-card: 1.75rem;
   --radius-panel: 2rem;
   --radius-arch: 46% 46% 1.75rem 1.75rem;

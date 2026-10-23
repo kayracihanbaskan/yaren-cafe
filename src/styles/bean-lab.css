@@ -87,7 +87,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 10px;
+  font-size: var(--type-label);
   line-height: 1.5;
   letter-spacing: 0.13em;
   font-weight: 700;
@@ -102,7 +102,7 @@
   margin-top: 30px;
   font-size: clamp(76px, 8.2vw, 134px);
   line-height: 1.04;
-  letter-spacing: -0.075em;
+  letter-spacing: var(--tracking-display);
 }
 .bean-lab-copy h2 > span,
 .bean-lab-copy h2 > em {
@@ -114,7 +114,7 @@
   color: var(--olive);
   margin-left: 90px;
   line-height: 1.1;
-  letter-spacing: -0.065em;
+  letter-spacing: var(--tracking-accent);
 }
 .bean-lab-intro {
   width: fit-content;
@@ -128,7 +128,7 @@
   width: fit-content;
   max-width: 360px;
   margin-top: 12px;
-  font-size: 13px;
+  font-size: var(--type-small);
   line-height: 1.8;
   color: var(--muted);
 }
@@ -200,7 +200,7 @@
   color: var(--espresso);
   background: var(--cream);
   box-shadow: 3px 3px 0 var(--sand);
-  font-size: 11px;
+  font-size: var(--type-label);
   font-weight: 600;
   transition:
     transform 160ms,
@@ -246,7 +246,7 @@
   padding-bottom: 8px;
   width: fit-content;
   max-width: 330px;
-  font-size: 11px;
+  font-size: var(--type-label);
   color: var(--muted);
 }
 .bean-keyboard {
@@ -256,7 +256,7 @@
   bottom: 132px;
   pointer-events: none;
   padding: 4px 6px;
-  font-size: 10px;
+  font-size: var(--type-label);
   color: var(--muted);
 }
 .bean-lab-floor {
@@ -318,7 +318,7 @@
   align-items: center;
   gap: 25px;
   min-height: 44px;
-  font-size: 11px;
+  font-size: var(--type-label);
 }
 .bean-lab-note a:hover {
   text-decoration: underline;
@@ -385,7 +385,7 @@
     );
   }
   .bean-lab-label {
-    font-size: 8px;
+    font-size: var(--type-label);
     letter-spacing: 0.1em;
   }
   .bean-lab-copy h2 {
@@ -404,7 +404,7 @@
   }
   .bean-lab-hint {
     max-width: 235px;
-    font-size: 12px;
+    font-size: var(--type-small);
   }
   .bean-coffee-link {
     margin-top: 24px;
@@ -443,11 +443,11 @@
   }
   .bean-button-row button {
     gap: 7px;
-    font-size: 10px;
+    font-size: var(--type-label);
     padding: 10px 11px;
   }
   .bean-pause-status {
-    font-size: 10px;
+    font-size: var(--type-label);
     padding-bottom: 9px;
     min-height: 22px;
   }
@@ -466,7 +466,7 @@
     font-size: 22px;
   }
   .bean-lab-note a {
-    font-size: 11px;
+    font-size: var(--type-label);
   }
   .stain-one {
     width: 230px;

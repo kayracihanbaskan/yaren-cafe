@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { serif, sans } from "../fonts";
+import { displayFont, serif, sans } from "../fonts";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale } from "@/i18n/types";
 import { site } from "@/lib/site";
@@ -71,7 +71,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${serif.variable} ${sans.variable}`}
+      className={`${displayFont.variable} ${serif.variable} ${sans.variable}`}
     >
       <body>
         <a href="#icerik" className="skip-link">

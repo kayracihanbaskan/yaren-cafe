@@ -71,7 +71,7 @@ body {
 .coffee-rail-controls > span {
   min-width: 105px;
   text-align: center;
-  font-size: 11px;
+  font-size: var(--type-label);
   font-weight: 700;
 }
 .manifesto-line {
@@ -274,7 +274,7 @@ body {
 }
 .yaren-scroll-desktop .ritual-body {
   margin-top: 24px;
-  font-size: 14px;
+  font-size: var(--type-body);
 }
 
 /* A phone gets a real swipe region. The vertical page remains a normal page. */

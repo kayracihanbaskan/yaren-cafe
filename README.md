@@ -45,6 +45,20 @@ Scroll Craft motoru değiştirilmeden `public/vendor/scrollcraft/` içine alınd
 
 Fizik ve Canvas çizimi `src/features/bean-lab/` içinde bağımsız tutulur. Yeni fizik kütüphanesi eklenmedi. `public/images/coffee-bean.webp`, yerleşik ImageGen ile bu çalışma için üretilen saydam çekirdek görselidir; Sharp ile 185×256 piksel ve yaklaşık 26 KB WebP dosyasına indirildi. Son kaynak Chromium'da 375/768/1440 px, fare, dokunma emülasyonu, klavye ve azaltılmış hareket ile kontrol edildi; gerçek cihaz testi yapılmadı.
 
+## Tipografi
+
+Üç rol `src/styles/theme.css` üzerinden değiştirilebilir:
+
+| Rol | Aile | Kullanım |
+| --- | --- | --- |
+| `--font-display` | Bricolage Grotesque 48pt ExtraBold, 800 | Ana ve bölüm başlıkları, ürün adları |
+| `--font-accent` | Lora, özellikle italik | Vurgular, fiyatlar, alıntılar |
+| `--font-body` | Manrope | Paragraflar, gezinme ve kontroller |
+
+Gövde 16 px, yardımcı metin 14 px, bilgi etiketleri 12 px tokenlarıyla yönetilir. Başlıklar bölüme özgü `clamp()` ölçeklerini korur; 375 px ekranda ana başlık yaklaşık 62 px, 1440 px ekranda yaklaşık 131 px olur. Harf aralığı yeni display fontuna göre açılmıştır. Dekoratif damgaların mikro yazıları bilgi metni sayılmaz.
+
+Fontlar `next/font/local` ile aynı sunucudan yüklenir. Yeni display fontu yaklaşık 46 KB WOFF2 dosyasıdır; lisansı `src/assets/fonts/bricolage-OFL.txt` içindedir. Kaynak: [Atelier Triay](https://github.com/ateliertriay/bricolage). Türkçe karakterler (`ĞğİıŞşÇçÖöÜüâ₺`) font kapsamından ve Chromium'da gerçekten kullanılan font adlarından doğrulandı. Aileyi değiştirmek için `src/app/fonts.ts` içindeki yerel dosya ve ilgili rol tokenı değiştirilir.
+
 ## Görsel kaynakları ve araçlar
 
 - Apocalypse Coffee yalnızca yaratıcı kalite, tipografik ölçek ve kompozisyon araştırması için incelendi; markası veya görselleri kullanılmadı.
@@ -52,7 +66,7 @@ Fizik ve Canvas çizimi `src/features/bean-lab/` içinde bağımsız tutulur. Ye
 - `coffee-cutout.webp` ve `friendship-coffee.webp`, bu tasarım için OpenAI ImageGen ile üretildi. Sharp ile WebP olarak optimize edildi; ilk görsel gerçek saydamlığını korur.
 - Mevcut `turkish-coffee.webp`, `espresso-cup.webp` ve `cafe-table.webp` önceki proje için ImageGen ile üretilmiş yerel fotoğraflardır.
 - `filter-coffee.webp`: [Unsplash kaynağı](https://images.unsplash.com/photo-1442512595331-e89e73853f31).
-- Lora ve Manrope: yerel Fontsource paketleri, OFL lisansı.
+- Bricolage Grotesque: Atelier Triay’dan yerel WOFF2, SIL OFL 1.1. Lora ve Manrope: mevcut yerel Fontsource paketleri, OFL lisansı.
 - Geliştirme komutları kullanıcının isteğiyle RTK üzerinden çalıştırıldı.
 
 ## Bu revizyondaki kontrol
